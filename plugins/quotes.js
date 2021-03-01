@@ -24,7 +24,7 @@ let handler  = async function (m, { conn, args, text })  {
         '-font',
     namanya,
     '-size',
-    '4x4',
+    '100x100',
     '-pointsize',
     '22',
     '-interline-spacing',
@@ -84,13 +84,13 @@ let handler  = async function (m, { conn, args, text })  {
     conn.sendFile(m.chat, outputPath, 'quotes.jpg', `_*Quotesmu akan di posting disini*_\n_*Instagram.com/publik.quotes*_`, m)
   })
 }
-handler.help = ['tweet'].map(v => v + ' _nama|username|teks_')
+handler.help = ['quotes'].map(v => v + ' _nama|username|teks_')
 handler.tags = ['New Fitur']
 handler.command = /^quotes|qts$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = false
+handler.group = true
 handler.private = false
 
 handler.admin = false

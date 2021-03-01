@@ -13,7 +13,7 @@ handler.mods = false
 handler.premium = false
 handler.group = true
 handler.private = false
-
+handler.owner = true
 handler.admin = false
 handler.botAdmin = false
 

@@ -46,7 +46,6 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'internet': 'Internet',
       'downloader': 'Downloader',
       'tools': 'Tools',
-      'fun': 'Fun',
       // 'jadibot': 'Jadi Bot',
       // 'owner': 'Owner Bot',
       'host': 'Host',
@@ -112,7 +111,7 @@ Berikut menu yang terdapat pada bot ini:
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
     // conn.reply(m.chat, text.trim(), m)
-    conn.fakeReply(m.chat, text.trim(), '0@s.whatsapp.net')
+    conn.fakeReply(m.chat, text.trim(), '0@s.whatsapp.net', 'Publik Quotes')
 
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
@@ -122,9 +121,9 @@ Berikut menu yang terdapat pada bot ini:
 handler.help = ['menu','help']
 handler.tags = ['main']
 handler.command = /^(menu|help|\.)$/i
-handler.owner = false
-handler.mods = true
-handler.premium = true
+handler.owner = true
+handler.mods = false
+handler.premium = false
 handler.group = false
 handler.private = false
 

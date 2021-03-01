@@ -17,8 +17,8 @@ let WAConnection = simple.WAConnection(_WAConnection)
 
 
 global.owner = ['6285255646434'] // Put your number here
-global.mods = ['6285756889788'] // Want some help?
-global.prems = ['6285255646434'] // Premium user has unlimited limit
+global.mods = [''] // Want some help?
+global.prems = [''] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',
@@ -285,8 +285,8 @@ conn.handler = async function (m) {
     }
   }
 }
-conn.welcome = 'Hai, @user!\nSelamat datang di grup @subject'
-conn.bye = 'Selamat tinggal @user!'
+conn.welcome = 'Hai, @user!\nSelamat datang di grup *@subject*\n\nKetik _*.Petunjuk*_ untuk melihat cara pengunaan'
+conn.bye = 'Good bye @user!'
 conn.onAdd = async function ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
   if (!chat.welcome) return
@@ -365,14 +365,14 @@ conn.on('close', () => {
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: 'Perintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
-    owner: 'Perintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
-    mods: 'Perintah ini hanya dapat digunakan oleh _*Moderator*_ !',
-    premium: 'Perintah ini hanya untuk member _*Premium*_ !',
-    group: 'Perintah ini hanya dapat digunakan di grup!',
-    private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
-    admin: 'Perintah ini hanya untuk *Admin* grup!',
-    botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
+    rowner: '',
+    owner: '',
+    mods: '',
+    premium: '',
+    group: '',
+    private: '',
+    admin: '',
+    botAdmin: '',
     unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*'
   }[type]
   if (msg) conn.reply(m.chat, msg, m)
@@ -438,7 +438,7 @@ global.reload = (event, filename) => {
     let dir = path.join(pluginFolder, filename)
     if (dir in require.cache) {
       delete require.cache[dir]
-      if (fs.existsSync(dir)) conn.logger.info(`re - require plugin '${filename}'`)
+      if (fs.existsSync(dir)) conn.logger.info(`Reload file - '${filename}'`)
       else {
         conn.logger.warn(`deleted plugin '${filename}'`)
         return delete global.plugins[filename]
