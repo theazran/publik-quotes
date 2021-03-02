@@ -7,19 +7,19 @@ let fontPath = 'src/font/Roboto-Light.ttf'
 let namanya = 'src/font/Roboto-Bold.ttf'
 let handler  = async function (m, { conn, args, text, sendMessage })  {
 
-  let inputPath ='src/kertas/quotes.jpg'
-  let pp = 'src/avatar_contact.png'
-  let outputPath = 'tmp/quotes.jpg'
+  // let [_, age, splitter, name] = text.match(Reg)
+  let inputPath ='src/kertas/quotespr.jpg'
+  let outputPath = 'tmp/quotespr.jpg'
   let d = new Date
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
 
   let [username, nickname, ...teks] = text.split('|')
-  let aaa = (teks ||[]).join('|')
+  let aaa = (teks ||[]).join('|').replace(/(\S+\s*){1,3}/g, '$&\n')
   // let teks = args.join ` `
  // conn.reply(m.chat, util.format({fontPath, inputPath, outputPath, tgl, hari, teks, username}), m)
   spawn('convert', [
-    inputPath, pp,
+    inputPath,
         '-font',
     namanya,
     '-size',
@@ -46,7 +46,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '-font',
     fontPath,
     '-size',
-    '4x4',
+    '-1000',
     '-pointsize',
     '20',
     '-interline-spacing',
@@ -101,7 +101,7 @@ ${kuot(global.tagar)}
 }
 handler.help = ['quotes'].map(v => v + ' _nama|username|teks_')
 handler.tags = ['New Fitur']
-handler.command = /^quotes|qts|lk$/i
+handler.command = /^quotespr|qpr|pr$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
