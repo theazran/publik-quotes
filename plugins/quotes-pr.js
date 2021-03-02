@@ -15,7 +15,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
 
   let [username, nickname, ...teks] = text.split('|')
-  let aaa = (teks ||[]).join('|').replace(/(\S+\s*){1,3}/g, '$&\n')
+  let aaa = (teks ||[]).join('|')
   // let teks = args.join ` `
  // conn.reply(m.chat, util.format({fontPath, inputPath, outputPath, tgl, hari, teks, username}), m)
   spawn('convert', [
@@ -80,7 +80,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
   ])
   .on('error', e => conn.reply(m.chat, util.format(e), m))
   .on('exit', () => {
-  conn.sendFile(m.chat, outputPath, 'quotes.jpg', `_*Quotesmu akan di posting disini*_\n_*Instagram.com/publik.quotes*_`, m)
+  conn.sendFile(m.chat, outputPath, 'quotespr.jpg', `_*Quotesmu akan di posting disini*_\n_*Instagram.com/publik.quotes*_`, m)
 conn.fakeReply(m.chat, `Quotes by ${username} 
 📑 ${nickname}
  
@@ -99,9 +99,9 @@ ${kuot(global.tagar)}
     
   })
 }
-handler.help = ['quotes'].map(v => v + ' _nama|username|teks_')
+handler.help = ['quotes pr'].map(v => v + ' _nama|username|teks_')
 handler.tags = ['New Fitur']
-handler.command = /^quotespr|qpr|pr$/i
+handler.command = /^quotespr|qtspr|pr$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

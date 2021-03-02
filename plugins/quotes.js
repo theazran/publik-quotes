@@ -8,7 +8,6 @@ let namanya = 'src/font/Roboto-Bold.ttf'
 let handler  = async function (m, { conn, args, text, sendMessage })  {
 
   let inputPath ='src/kertas/quotes.jpg'
-  let pp = 'src/avatar_contact.png'
   let outputPath = 'tmp/quotes.jpg'
   let d = new Date
   let tgl = d.toLocaleDateString('id-Id')
@@ -19,7 +18,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
   // let teks = args.join ` `
  // conn.reply(m.chat, util.format({fontPath, inputPath, outputPath, tgl, hari, teks, username}), m)
   spawn('convert', [
-    inputPath, pp,
+    inputPath,
         '-font',
     namanya,
     '-size',
