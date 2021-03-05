@@ -26,7 +26,7 @@ global.APIs = { // API Prefix
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
-  'https://api.xteam.xyz': '4a3eee8841ca96dc'
+  'https://api.xteam.xyz': '2307309707465b6e'
   // 'https://api.xteam.xyz': 'b15aeadca88fd03b'
 }
 
