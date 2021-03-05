@@ -4,4 +4,10 @@ node_modules
 database.json
 *_database.json
 package-lock.json
-
+tmp/quotes-0.jpg
+tmp/quotes-1.jpg
+tmp/quoteslk-0.jpg
+tmp/quoteslk-1.jpg
+tmp/quotespr.jpg
+tmp/quotespr-0.jpg
+tmp/quotespr-1.jpg

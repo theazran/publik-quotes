@@ -1,11 +1,30 @@
+
+// ig
+let fetch = require('node-fetch')
+
+/*END*/
+let PhoneNumber = require('awesome-phonenumber')
 let util = require('util')
 let path = require('path')
 let { spawn } = require('child_process')
 
-// Font By MFarelS:V
 let fontPath = 'src/font/Roboto-Light.ttf'
 let namanya = 'src/font/Roboto-Bold.ttf'
+
 let handler  = async function (m, { conn, args, text, sendMessage })  {
+  // IG
+  let res = await fetch(global.API('xteam', '/dl/igstalk', {
+    nama: args[0]
+  }, 'APIKEY'))
+  let json = await res.json()
+  if (res.status != 200) throw json
+  // if (res.status != 403) throw 'Limit Quotes hari ini sudah habis, simpan buat besok lagi yah! '  
+  if (json.result.error) throw `Pastikan username Instagram kamu benar, dan juga tidak menyertakan *@*`
+  let {
+    full_name,
+    username,
+  } = json.result.user
+
 
   let inputPath ='src/kertas/quotes.jpg'
   let outputPath = 'tmp/quotes.jpg'
@@ -13,13 +32,18 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
 
-  let [username, nickname, ...teks] = text.split('|')
-  let aaa = (teks ||[]).join('|')
+  let [a,...teks] = text.split('#')
+  let aaa = (teks ||[]).join('#')
+  if (!aaa) return conn.reply(m.chat, '_Quotesnya mana?_', m) 
+
+  let split = aaa.replace(/(\S+\s*){1,5}/g, "$&\n")
+  let fixedHeight = split.split("\n").slice(0,7).join("\\n")
+
   // let teks = args.join ` `
  // conn.reply(m.chat, util.format({fontPath, inputPath, outputPath, tgl, hari, teks, username}), m)
   spawn('convert', [
     inputPath,
-        '-font',
+    '-font',
     namanya,
     '-size',
     '100x100',
@@ -34,7 +58,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '-font',
     fontPath,
     '-size',
-    '4x4',
+    '100x150',
     '-pointsize',
     '18',
     '-interline-spacing',
@@ -52,6 +76,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '1.5',
     '-annotate',
     '+150+340',
+    fixedHeight,
     aaa,
         '-font',
     namanya,
@@ -63,7 +88,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '-7.5',
     '-annotate',
     '+207+610',
-    username,
+    full_name,
     '-font',
     fontPath,
     '-size',
@@ -73,15 +98,14 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '-interline-spacing',
     '-7.5',
     '-annotate',
-    '+207+625',
-    nickname,
+    '+207+627',
+    '@'+username,
     outputPath
   ])
   .on('error', e => conn.reply(m.chat, util.format(e), m))
   .on('exit', () => {
-  conn.sendFile(m.chat, outputPath, 'quotes.jpg', `_*Quotesmu akan di posting disini*_\n_*Instagram.com/publik.quotes*_`, m)
-conn.fakeReply(m.chat, `Quotes by ${username} 
-📑 ${nickname}
+  conn.sendFile(m.chat, outputPath, 'quotes.jpg', `Quotes by ${full_name} 
+📑 @${username}
  
 ${kuot(global.capt)}
 
@@ -90,21 +114,16 @@ Jangan lupa follow
 🏷️ @publik.quotes
 🏷️ @publik.quotes
 
-${kuot(global.tagar)}
-
-`, '0@s.whatsapp.net', '*Auto Post Instagram* - by M Asran')
-
- // conn.reply(m.chat, util.format({fontPath, inputPath, outputPath, tgl, hari, teks, username}), m)
-    
+${kuot(global.tagar)}`, m)   
   })
 }
-handler.help = ['quotes'].map(v => v + ' _nama|username|teks_')
+handler.help = ['lk'].map(v => v + ' username|teks_')
 handler.tags = ['New Fitur']
 handler.command = /^quotes|qts|lk$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 
 handler.admin = false
@@ -113,14 +132,6 @@ handler.botAdmin = false
 handler.fail = null
 
 module.exports = handler
-
-
-
-
-
-// BY MFARELS NJEENK
-// https://GitHub.com/MFarelS/
-
 
 
 function kuot(list) {
@@ -134,7 +145,11 @@ global.capt = [
 "Bikin quotes via whatsapp, untuk info dan caranya silahkan DM yah!"
 ]
 global.tagar = [
- "#quotes #bucin #publikquotes #quotesbucin #buciners #motivasi #humor #bijak #katakat #quotesvisual #kuotesku",
+ "#quotes #bucin #publikquotes #quotesbucin #buciners #motivasi #humor #bijak #katakata #quotesvisual #kuotesku",
  "#remaja #quotestagram #quotesindonesia #publikquotes #quotesdaily",
- "#publikquotes #lagibucin #quoteskeren #quotesbijak #bijak"
+ "#publikquotes #lagibucin #quoteskeren #quotesbijak #bijak",
+ "#storywa #hijrah #instagram #plus62"
 ]
+
+
+

@@ -5,7 +5,7 @@ let handler = function (m) {
 
 Hi kak *${name}*, silahkan kirim pesan dengan perintah berikut:
 
-*.quotes Nama | Username | Kuotes kamu*
+*quotes Nama | Username | Kuotes kamu*
 
 Quotesmu akan di upload otomatis disini:
 _*Instagram.com/publik-quotes*_
