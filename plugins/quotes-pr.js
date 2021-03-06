@@ -73,7 +73,6 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '1.5',
     '-annotate',
     '+150+340',
-    fixedHeight,
     aaa,
         '-font',
     namanya,
