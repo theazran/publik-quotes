@@ -35,8 +35,6 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
   let aaa = (teks ||[]).join('#')
   if (!aaa) return conn.reply(m.chat, '_Quotesnya mana?_', m) 
 
-  let split = aaa.replace(/(\S+\s*){1,5}/g, "$&\n")
-  let fixedHeight = split.split("\n").slice(0,7).join("\\n")
 
   // let teks = args.join ` `
  // conn.reply(m.chat, util.format({fontPath, inputPath, outputPath, tgl, hari, teks, username}), m)
@@ -155,5 +153,6 @@ global.capt = [
 global.tagar = [
  "#quotes #bucin #publikquotes #quotesbucin #buciners #motivasi #humor #bijak #katakat #quotesvisual #kuotesku",
  "#remaja #quotestagram #quotesindonesia #publikquotes #quotesdaily",
- "#publikquotes #lagibucin #quoteskeren #quotesbijak #bijak"
+ "#publikquotes #lagibucin #quoteskeren #quotesbijak #bijak",
+  "#storywa #hijrah #instagram #plus62"
 ]

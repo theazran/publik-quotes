@@ -1,4 +1,3 @@
-
 // ig
 let fetch = require('node-fetch')
 
@@ -13,6 +12,7 @@ let namanya = 'src/font/Roboto-Bold.ttf'
 
 let handler  = async function (m, { conn, args, text, sendMessage })  {
   // IG
+  if (!args[0]) throw 'Uhm...username instagramnya mana?'
   let res = await fetch(global.API('xteam', '/dl/igstalk', {
     nama: args[0]
   }, 'APIKEY'))
@@ -35,9 +35,10 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
   let [a,...teks] = text.split('#')
   let aaa = (teks ||[]).join('#')
   if (!aaa) return conn.reply(m.chat, '_Quotesnya mana?_', m) 
+  // if (aaa >= 5 ) return conn.reply(m.chat, 'Panjang bet dah')
 
-  let split = aaa.replace(/(\S+\s*){1,5}/g, "$&\n")
-  let fixedHeight = split.split("\n").slice(0,7).join("\\n")
+  // let split = aaa.replace(/(\S+\s*){1,5}/g, "$&\n")
+  // let fixedHeight = split.split("\n").slice(0,7).join("\\n")
 
   // let teks = args.join ` `
  // conn.reply(m.chat, util.format({fontPath, inputPath, outputPath, tgl, hari, teks, username}), m)
@@ -76,7 +77,6 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '1.5',
     '-annotate',
     '+150+340',
-    fixedHeight,
     aaa,
         '-font',
     namanya,
