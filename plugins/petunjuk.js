@@ -1,13 +1,16 @@
-let handler = function (m) {
+let handler = async function (m, { usedPrefix }) {
 	let name = conn.getName(m.sender)
 		let a = `
 *PETUNJUK*
 
 Hi kak *${name}*, silahkan kirim pesan dengan perintah berikut:
 
-*quotes Nama | Username | Kuotes kamu*
+*${usedPrefix}daftar Nama Lengkap#ig#lk/pr*
 
-Quotesmu akan di upload otomatis disini:
+*lk* = _Laki-laki_
+*pr* = _Perempuan_
+
+
 _*Instagram.com/publik-quotes*_
 _*Instagram.com/publik-quotes*_
 _*Instagram.com/publik-quotes*_

@@ -17,6 +17,7 @@ handler.tags = ['random']
 handler.command = /^(berita|news)$/i
 handler.owner = false
 handler.mods = false
+handler.register = true
 handler.premium = false
 handler.group = false
 handler.private = false

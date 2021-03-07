@@ -19,15 +19,15 @@
     "whatsapp",
     "js-whatsapp"
   ],
-  "homepage": "https://github.com/theazran/koped-new",
+  "homepage": "https://github.com/theazran/theazran",
   "author": {
     "name": "M Asran"
   },
   "repository": {
-    "url": "https://github.com/theazran/koped-new.git"
+    "url": "https://github.com/theazran/publik-quotes.git"
   },
   "bugs": {
-    "url": "https://github.com/theazran/koped-new/issues"
+    "url": "https://github.com/theazran/publik-quotes/issues"
   },
   "license": "GPL-3.0",
   "dependencies": {

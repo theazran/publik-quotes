@@ -119,7 +119,7 @@ ${kuot(global.tagar)}`, m)
 }
 handler.help = ['lk'].map(v => v + ' username|teks_')
 handler.tags = ['New Fitur']
-handler.command = /^quotes|qts|lk$/i
+handler.command = /^qtslkig$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

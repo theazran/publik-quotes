@@ -1,7 +1,3 @@
-// ig
-let fetch = require('node-fetch')
-
-/*END*/
 let PhoneNumber = require('awesome-phonenumber')
 let util = require('util')
 let path = require('path')
@@ -10,34 +6,26 @@ let { spawn } = require('child_process')
 let fontPath = 'src/font/Roboto-Light.ttf'
 let namanya = 'src/font/Roboto-Bold.ttf'
 
-let handler  = async function (m, { conn, args, text, sendMessage })  {
-  // IG
-  let res = await fetch(global.API('xteam', '/dl/igstalk', {
-    nama: args[0]
-  }, 'APIKEY'))
-  let json = await res.json()
-  if (res.status != 200) throw json
-  // if (res.status != 403) throw 'Limit Quotes hari ini sudah habis, simpan buat besok lagi yah! '  
-  if (json.result.error) throw `Pastikan username Instagram kamu benar, dan juga tidak menyertakan *@*`
-  let {
-    full_name,
-    username,
-  } = json.result.user
-
-
-  let inputPath ='src/kertas/quotespr.jpg'
-  let outputPath = 'tmp/quotespr.jpg'
+  let handler  = async function (m, { conn, args, text, sendMessage, usedPrefix })  {
+  let usera = global.DATABASE._data.users[m.sender]
+  let outputPath = 'tmp/quotes.jpg'
   let d = new Date
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
-  
-  let [a,...teks] = text.split('#')
-  let aaa = (teks ||[]).join('#')
-  if (!aaa) return conn.reply(m.chat, '_Quotesnya mana?_', m) 
+  let teks = args.join` `
+  if (!usera.registered) throw `Anda belum terdaftar sebagai member, silahkan ketik perintah dibawah ini:
+
+*${usedPrefix}daftar Nama Lengkap#ig#lk/pr*
+
+*lk* = _Laki-laki_
+*pr* = _Perempuan_
+`
+  if (usera.jk =='pr')  
+      {inputPath ='src/kertas/quotespr.jpg'}
+  else if (usera.jk =='lk')
+      {inputPath ='src/kertas/quotes.jpg'}
 
 
-  // let teks = args.join ` `
- // conn.reply(m.chat, util.format({fontPath, inputPath, outputPath, tgl, hari, teks, username}), m)
   spawn('convert', [
     inputPath,
     '-font',
@@ -73,7 +61,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '1.5',
     '-annotate',
     '+150+340',
-    aaa,
+    text,
         '-font',
     namanya,
     '-size',
@@ -84,7 +72,7 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '-7.5',
     '-annotate',
     '+207+610',
-    full_name,
+    usera.name,
     '-font',
     fontPath,
     '-size',
@@ -95,13 +83,13 @@ let handler  = async function (m, { conn, args, text, sendMessage })  {
     '-7.5',
     '-annotate',
     '+207+627',
-    '@'+username,
+    '@'+usera.ig,
     outputPath
   ])
   .on('error', e => conn.reply(m.chat, util.format(e), m))
   .on('exit', () => {
-  conn.sendFile(m.chat, outputPath, 'quotespr.jpg', `Quotes by ${full_name} 
-📑 @${username}
+  conn.sendFile(m.chat, outputPath, 'quotes.jpg', `Quotes by ${usera.name} 
+📑 @${usera.ig}
  
 ${kuot(global.capt)}
 
@@ -113,14 +101,13 @@ Jangan lupa follow
 ${kuot(global.tagar)}`, m)   
   })
 }
-
-handler.help = ['quotes pr'].map(v => v + ' _nama|username|teks_')
+handler.help = ['lk'].map(v => v + ' _Kuotes_')
 handler.tags = ['New Fitur']
-handler.command = /^qtsprig$/i
+handler.command = /^lk|qtslk|quoteslk|qts|kuotes|q|quotes$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
-handler.group = true
+handler.group = false
 handler.private = false
 
 handler.admin = false
@@ -129,14 +116,6 @@ handler.botAdmin = false
 handler.fail = null
 
 module.exports = handler
-
-
-
-
-
-// BY MFARELS NJEENK
-// https://GitHub.com/MFarelS/
-
 
 
 function kuot(list) {
@@ -150,8 +129,11 @@ global.capt = [
 "Bikin quotes via whatsapp, untuk info dan caranya silahkan DM yah!"
 ]
 global.tagar = [
- "#quotes #bucin #publikquotes #quotesbucin #buciners #motivasi #humor #bijak #katakat #quotesvisual #kuotesku",
+ "#quotes #bucin #publikquotes #quotesbucin #buciners #motivasi #humor #bijak #katakata #quotesvisual #kuotesku",
  "#remaja #quotestagram #quotesindonesia #publikquotes #quotesdaily",
  "#publikquotes #lagibucin #quoteskeren #quotesbijak #bijak",
-  "#storywa #hijrah #instagram #plus62"
+ "#storywa #hijrah #instagram #plus62"
 ]
+
+
+

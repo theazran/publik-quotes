@@ -87,12 +87,14 @@ conn.handler = async function (m) {
       let user
       if (user = global.DATABASE._data.users[m.sender]) {
         if (!isNumber(user.exp)) user.exp = 0
-        if (!isNumber(user.limit)) user.limit = 10
+        if (!isNumber(user.limit)) user.limit = 100
         if (!isNumber(user.lastclaim)) user.lastclaim = 0
         if (!'registered' in user) user.registered = false
         if (!user.registered) {
           if (!'name' in user) user.name = this.getName(m.sender)
           if (!isNumber(user.age)) user.age = -1
+          if (!isNumber(user.ig)) user.ig = ''
+          if (!isNumber(user.jk)) user.jk = ''
           if (!isNumber(user.regTime)) user.regTime = -1
         }
       } else global.DATABASE._data.users[m.sender] = {
@@ -101,6 +103,8 @@ conn.handler = async function (m) {
         lastclaim: 0,
         registered: false,
         name: conn.getName(m.sender),
+        ig: '',
+        jk: '',
         age: -1,
         regTime: -1,
       }
