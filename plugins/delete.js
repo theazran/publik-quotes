@@ -9,7 +9,7 @@ let handler = function (m) {
     remoteJid: m.chat
   })
 }
-handler.help = ['del', 'delete']
+handler.help = ['del', 'hapus','delete']
 handler.tags = ['info']
 
 handler.command = /^del(ete)?$/i

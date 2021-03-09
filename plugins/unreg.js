@@ -1,10 +1,15 @@
 const { createHash } = require('crypto')
-let handler = async function (m, { args }) {
-  // if (!args[0]) throw '_Username instagram tidak boleh kosong!_'
+let handler = async function (m, { args, usedPrefix }) {
+ 
   let user = global.DATABASE._data.users[m.sender]
+  if (!user.registered) return conn.reply(m.chat, `Anda belum terdaftar sebagai member, silahkan ketik perintah dibawah ini:
+
+*${usedPrefix}daftar Nama Lengkap#ig#lk/pr*
+
+*lk* = _Laki-laki_
+*pr* = _Perempuan_
+`, m)
   let sn = user.ig
-  // if (args[0] !== sn) throw '_Username instagram salah_'
-  // if (args[0]= sn) throw '_Username instagram salah_'
   args[0] = sn
   user.registered = false
   m.reply(`Unreg berhasil!`)

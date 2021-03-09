@@ -290,7 +290,7 @@ conn.handler = async function (m) {
     }
   }
 }
-conn.welcome = 'Hai, @user!\nSelamat datang di grup *@subject*\n\nKetik _*.Petunjuk*_ untuk melihat cara pengunaan'
+conn.welcome = 'Hai, @user!\nSelamat datang di grup *@subject*\n\nKetik _*#daftar Nama Lengkap#username_ig#lk/pr*_\nAgar kamu bisa membuat Quotesmu\n\nlk = Laki-laki\npr = Perempuan'
 conn.bye = 'Good bye @user!'
 conn.onAdd = async function ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
@@ -338,9 +338,6 @@ conn.onDelete = async function (m) {
   if (chat.delete) return
   await this.reply(m.key.remoteJid, `
 Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
-
-Untuk mematikan fitur ini, ketik
-*.enable delete*
 `.trim(), m.message, {
     contextInfo: {
       mentionedJid: [m.participant]
@@ -378,7 +375,7 @@ global.dfail = (type, m, conn) => {
     private: '',
     admin: '',
     botAdmin: '',
-    unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*'
+    unreg: ''
   }[type]
   if (msg) conn.reply(m.chat, msg, m)
 }
