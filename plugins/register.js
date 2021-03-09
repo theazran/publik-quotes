@@ -5,8 +5,8 @@ let handler = async function (m, { text, usedPrefix }) {
   if (!name) throw 'Nama tidak boleh kosong'
   if (!ig) throw 'Instagram tidak boleh kosong'
   if (!jk) throw 'Jenis Kelamin tidak boleh kosong'
-  if (name.length < 3) throw '_Nama kamu lebih pendek lagi?_'
-  if (name.length < 3) throw '_Nama kamu lebih pendek lagi?_'
+  if (name.length < 3) throw '_Nama kamu bisa lebih pendek lagi?_'
+  if (name.length < 3) throw '_Nama kamu bisa lebih pendek lagi?_'
   if (ig.length < 5) throw '_Instagram minimal 5 karakter woi, jangan ngayal!_'
   if (ig.startsWith('@')) throw 'Instagram gak usah pake *@* kaka'
   if (jk.length > 2)  throw 'Jenis kelamin di singkat aja *lk* atau *pr*\n\nlk = _Laki-laki_\npr = _Perempuan_' 
@@ -32,7 +32,7 @@ let handler = async function (m, { text, usedPrefix }) {
 
   if (usera.jk == 'lk') {jns = 'Laki-laki'}
   else if (usera.jk == 'pr') {jns = 'Perempuan'}
-    
+
   usera.registered = true
   m.reply(`
 *Pendaftaran Berhasil*
