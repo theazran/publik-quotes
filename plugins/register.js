@@ -1,15 +1,19 @@
 let handler = async function (m, { text, usedPrefix }) {
   let usera = global.DATABASE._data.users[m.sender]
-  if (usera.registered === true) throw `Anda sudah terdaftar\nMau daftar ulang? \nSilahkan ketik *${usedPrefix}unreg*` 
-  let [name, ig, jk] = text.split('#')
-  if (!name) throw 'Nama tidak boleh kosong'
-  if (!ig) throw 'Instagram tidak boleh kosong'
-  if (!jk) throw 'Jenis Kelamin tidak boleh kosong'
-  if (name.length < 3) throw '_Nama kamu bisa lebih pendek lagi?_'
-  if (name.length < 3) throw '_Nama kamu bisa lebih pendek lagi?_'
-  if (ig.length < 5) throw '_Instagram minimal 5 karakter woi, jangan ngayal!_'
-  if (ig.startsWith('@')) throw 'Instagram gak usah pake *@* kaka'
-  if (jk.length > 2)  throw 'Jenis kelamin di singkat aja *lk* atau *pr*\n\nlk = _Laki-laki_\npr = _Perempuan_' 
+  if (usera.registered === true) throw `⚠️ Anda sudah terdaftar\nMau daftar ulang? \nSilahkan ketik *${usedPrefix}unreg*` 
+  let pisah = '#'
+  let [name, ig, jk] = text.split(pisah)
+  if (!name) throw '⚠️ Nama tidak boleh kosong'
+  if (!ig) throw '⚠️ Instagram tidak boleh kosong'
+  if (!jk) throw '⚠️ Jenis Kelamin tidak boleh kosong'
+  if (name.length < 3) throw '⚠️ Nama minimal 3 huruf!'
+  if (name.length > 20) throw '⚠️ Nama maksimal 20 karakter termasuk spasi!'
+  if (name.endsWith(' ')) throw '⚠️ Diakhir Namamu tidak boleh ada spasi'
+  if (ig.length < 5) throw '⚠️ Username Instagram minimal 5 karakter!'
+  if (ig.includes("@")) throw '⚠️ Instagram boleh pakai *@*'
+  if (ig.includes(' ')) throw '⚠️ Instagram tidak boleh pakai spasi!'
+  if (jk.includes(' ')) throw `⚠️ Tidak boleh pakai spasi setelah *${pisah}*`
+  if (jk.length > 2)  throw '⚠️ Jenis kelamin di singkat aja *lk* atau *pr*\n\nlk = _Laki-laki_\npr = _Perempuan_' 
   
   usera.name = name
   usera.ig = ig

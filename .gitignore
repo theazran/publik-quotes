@@ -6,6 +6,7 @@ database.json
 tmp
 package-lock.json
 plugins/ige.js
+plugins/ig.js
 plugins/cobadaftar.js
 plugins/profile.js
 plugins/tutup.js
