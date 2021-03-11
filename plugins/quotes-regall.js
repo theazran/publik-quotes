@@ -13,7 +13,7 @@ let namanya = 'src/font/Roboto-Bold.ttf'
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
   let teks = args.join` `
-  if (!usera.registered) throw `Anda belum terdaftar sebagai member, silahkan ketik perintah dibawah ini:
+  if (!usera.registered) throw `⚠️ Anda belum terdaftar sebagai member, silahkan ketik perintah dibawah ini:
 
 *${usedPrefix}daftar Nama Lengkap#ig#lk/pr*
 
@@ -22,10 +22,10 @@ let namanya = 'src/font/Roboto-Bold.ttf'
 `
   if (usera.jk == 'lk') {jns = `Kaka ${usera.name} Ganteng`}
   else if (usera.jk == 'pr') {jns = `Kaka ${usera.name} yang Cantik`}
-  if (!text) return conn.reply(m.chat, `Quotesnya mana ${jns}?`, m)
+  if (!text) return conn.reply(m.chat, `⚠️ Quotesnya mana ${jns}?`, m)
 
-  if (text.length < 10) return conn.reply(m.chat, `Hei ${jns}, niat gak sih bikin Quotes? Pendek bet dah`, m) 
-  if (text.length > 180) return conn.reply(m.chat, `Hei ${jns} dan baik hati, Ada yang lebih panjang gak?`, m) 
+  if (text.length < 10) return conn.reply(m.chat, `⚠️ Hei ${jns}, niat gak sih bikin Quotes? Pendek bet dah`, m) 
+  if (text.length > 180) return conn.reply(m.chat, `⚠️ Hei ${jns} dan baik hati, Ada yang lebih panjang gak?`, m) 
 
   if (usera.jk =='pr')  
       {inputPath ='src/kertas/quotespr.jpg'}
