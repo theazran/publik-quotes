@@ -102,8 +102,6 @@ ${kuot(global.capt)}
 
 Jangan lupa follow
 🏷️ @publik.quotes
-🏷️ @publik.quotes
-🏷️ @publik.quotes
 
 ${kuot(global.tagar)}`, m)   
   })
@@ -111,11 +109,7 @@ ${kuot(global.tagar)}`, m)
 handler.help = ['lk'].map(v => v + ' _Kuotes_')
 handler.tags = ['New Fitur']
 handler.command = /^lk|qtslk|quoteslk|qts|kuotes|q|quotes|qt$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
 handler.group = true
-handler.private = false
 
 handler.admin = false
 handler.botAdmin = false
