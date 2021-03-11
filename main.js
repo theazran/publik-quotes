@@ -371,7 +371,7 @@ global.dfail = (type, m, conn) => {
     owner: '',
     mods: '',
     premium: '',
-    group: '',
+    group: '⚠️ Perintah ini hanya bisa digunakan dalam group!',
     private: '',
     admin: '',
     botAdmin: '',

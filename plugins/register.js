@@ -60,6 +60,6 @@ Silahkan kirim perintah dibawah ini untuk membuat Quotes:
 }
 
 handler.command = /^(df|daftar|reg(ister)?)$/i
-
+handler.group = true
 module.exports = handler
 
