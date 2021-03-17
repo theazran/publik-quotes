@@ -1,34 +1,25 @@
-let handler = async (m, { conn, args }) => {
-  let sortedExp = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].exp - a[1].exp)
-  let sortedLim = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].limit - a[1].limit)
-  let usersExp = sortedExp.map(v => v[0])
-  let usersLim = sortedLim.map(v => v[0])
-  let len = args[0] && args[0].length > 0 ? Math.min(100, Math.max(parseInt(args[0]), 5)) : Math.min(20, sortedExp.length)
-  let text = `
-• *Member Aktif Top ${len}* •
-Kamu: *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}*
-
-${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`@`[0] + ': *' + data.exp + ' Pesan*').join`\n`}
-`.trim()
-  conn.reply(m.chat, text, m, {
-    contextInfo: {
-      mentionedJid: [...usersExp.slice(0, len), ...usersLim.slice(0, len)]
-    }
-  })
+let { Presence, GroupSettingChange } = require('@adiwajshing/baileys')
+let handler  = async (m, { conn, args, usedPrefix, command }) => {
+  if(!args || !args[0]) {
+    await conn.updatePresence(m.chat, Presence.composing) 
+    conn.reply(m.chat, `*Format salah! Contoh :*\n\n  *○ ${usedPrefix + command} close*\n *○ ${usedPrefix + command} open*`, m)
+  } else if(args[0] == 'buka') {
+    conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, false)
+  } else if(args[0] == 'tutup') {
+    conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true)
+  } else {
+    await conn.updatePresence(m.chat, Presence.composing) 
+    conn.reply(m.chat, `*Format salah! Contoh :*\n\n  *○ ${usedPrefix + command} close*\n *○ ${usedPrefix + command} open*`, m)
+  } 
 }
-handler.help = ['leaderboard [jumlah user]', 'lb [jumlah user]']
-handler.tags = ['xp']
-handler.command = /^(leaderboard|lb|useraktif)$/i
+handler.command = /^(group)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
+handler.admin = true
+handler.botAdmin = true
 handler.fail = null
 handler.exp = 0
-
 module.exports = handler

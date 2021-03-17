@@ -75,7 +75,7 @@ let handler  = async function (m, { conn, args, text })  {
 handler.help = ['tweet'].map(v => v + ' _teks_')
 handler.tags = ['New Fitur']
 handler.command = /^tweet|tw$/i
-handler.owner = false
+handler.owner = true
 handler.mods = false
 handler.premium = false
 handler.group = false
