@@ -101,7 +101,7 @@ Jangan lupa follow
 
 ${kuot(global.tagar)}`, m)   
   })
-return conn.fakeReply(m.chat, 'Quotesmu akan di posting disini\ninstagram.com/publik.quotes','0@s.whatsapp.net', 'Follow ya!', 'status@broadcast')
+await conn.fakeReply(m.chat, 'Quotesmu akan di posting disini\ninstagram.com/publik.quotes','0@s.whatsapp.net', 'Follow ya!', 'status@broadcast')
 }
 
 
