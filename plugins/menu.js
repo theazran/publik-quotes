@@ -120,7 +120,7 @@ Berikut menu yang terdapat pada bot ini:
 }
 handler.help = ['menu','help']
 handler.tags = ['main']
-handler.command = /^(menu|help|\.)$/i
+handler.command = /^(menuuu|helppp|\.)$/i
 handler.owner = true
 handler.mods = false
 handler.premium = false
