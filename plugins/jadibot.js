@@ -24,7 +24,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
       }, 30000)
     })
     conn.once('connection-validated', user => {
-      parent.reply(m.chat, 'Berhasil tersambung dengan WhatsApp - mu.\n*NOTE: Ini cuma numpang*\n' + JSON.stringify(user, null, 2), m)
+      parent.reply(m.chat, 'Berhasil tersambung dengan WhatsApp - mu.\n' + JSON.stringify(user, null, 2), m)
     })
     conn.welcome = global.conn.welcome
     conn.bye = global.conn.bye
