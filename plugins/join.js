@@ -1,8 +1,9 @@
 let handler = async (m, { conn,text }) => {
+
 conn.query({
-	json:["action", "invite", `${text}`]
+	json:["action", "invite", `${text.replace('https://chat.whatsapp.com/','')}`]
 })
-m.reply( `Berhasil Gabung ke grup, dengan code *${text}*`)
+m.reply( `Berhasil Gabung`)
 }
 handler.help = [''].map(v => v + ' <>')
 handler.tags = ['']
