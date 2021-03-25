@@ -6,7 +6,7 @@ let { spawn } = require('child_process')
 let fontPath = 'src/font/Roboto-Light.ttf'
 let namanya = 'src/font/Roboto-Bold.ttf'
 
-  let handler  = async function (m, { conn, args, text, sendMessage, usedPrefix })  {
+  let handler  = async function (m, {  conn, args, text, sendMessage, usedPrefix })  {
   let usera = global.DATABASE._data.users[m.sender]
   let outputPath = 'tmp/quotes.jpg'
   let d = new Date
@@ -19,19 +19,20 @@ let namanya = 'src/font/Roboto-Bold.ttf'
 
 *lk* = _Laki-laki_
 *pr* = _Perempuan_
+
+Jika *belum mengerti* silahkan ketik *#admin* untuk meminta bantuan!
 `
   if (usera.jk == 'lk') {jns = `Kaka ${usera.name} Ganteng`}
-  else if (usera.jk == 'pr') {jns = `Kaka ${usera.name} yang Cantik`}
+  else if (usera.jk == 'pr') {jns = `Kaka ${usera.name} Cantik`}
   if (!text) return conn.reply(m.chat, `⚠️ Quotesnya mana ${jns}?`, m)
 
-  if (text.length < 10) return conn.reply(m.chat, `⚠️ Hei ${jns}, niat gak sih bikin Quotes? Pendek bet dah`, m) 
-  if (text.length > 180) return conn.reply(m.chat, `⚠️ Hei ${jns} dan baik hati, Ada yang lebih panjang gak?`, m) 
+  if (text.length < 10) return conn.reply(m.chat, `⚠️ Hei ${jns}, Quotes minimal 10 huruf`, m) 
+  if (text.length > 180) return conn.reply(m.chat, `⚠️ Hei ${jns}, Quotes maksimal 180 huruf`, m) 
 
   if (usera.jk =='pr')  
       {inputPath ='src/kertas/quotespr.jpg'}
   else if (usera.jk =='lk')
       {inputPath ='src/kertas/quotes.jpg'}
-
 
   spawn('convert', [
     inputPath,
@@ -69,7 +70,7 @@ let namanya = 'src/font/Roboto-Bold.ttf'
     '-annotate',
     '+150+340',
     text,
-        '-font',
+    '-font',
     namanya,
     '-size',
     '4x4',

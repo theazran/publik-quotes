@@ -290,7 +290,7 @@ conn.handler = async function (m) {
     }
   }
 }
-conn.welcome = 'Hai, @user!\nSelamat datang di grup *@subject*\n\nKetik:\n_*#daftar Nama Lengkap#username_ig#lk/pr*_\nAgar kamu bisa membuat Quotesmu\n\nlk = Laki-laki\npr = Perempuan\n\nContoh:\n#daftar M Asran#theazran_#lk\nApabila kurang dimengerti, silahkan hubungi salah satu admin dengan mengetik #admin\n\nSemua Quotes akan diposting disini:\nInstagram.com/publik.quotes'
+conn.welcome = 'Hai, @user!\nSelamat datang di grup *@subject*\n\nKetik:\n_*#daftar Nama Lengkap#username_ig#lk/pr*_\nAgar kamu bisa membuat Quotesmu\n\nlk = Laki-laki\npr = Perempuan\n\nContoh:\n#daftar M Asran#theazran_#lk\nApabila *kurang dimengerti*, silahkan hubungi salah satu admin dengan mengetik *#admin*\n\nSemua Quotes akan diposting disini:\nInstagram.com/publik.quotes'
 conn.bye = 'Good bye @user!'
 conn.onAdd = async function ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]

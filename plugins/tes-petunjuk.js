@@ -11,15 +11,25 @@ Hi kak *${name}*, silahkan kirim pesan dengan perintah berikut:
 *lk* = _Laki-laki_
 *pr* = _Perempuan_
 
-Jika belum mengerti silahkan hubungi salah satu admin group ini
+Jika *belum mengerti* silahkan ketik *#admin* untuk meminta bantuan!
 `}
-  if (usera.registered === true) {ptnjk = ''}
+  if (usera.registered === true) {ptnjk =`*PETUNJUK*
+
+Hi kak *${name}*, silahkan kirim pesan dengan perintah berikut:
+
+*${usedPrefix}quotes* _tulis quotesmu disini_
+*${usedPrefix}kuotes* _tulis quotesmu disini_
+*${usedPrefix}qts* _tulis quotesmu disini_
+*${usedPrefix}q* _tulis quotesmu disini_
+
+Jika *belum mengerti* silahkan ketik *#admin* untuk meminta bantuan!
+` }
 
 m.reply(ptnjk .trim())
 
 }
 
-handler.command = /^(tess|tt)$/i
+handler.command = /^(petunjuk|tutor)$/i
 handler.group = true
 module.exports = handler
 

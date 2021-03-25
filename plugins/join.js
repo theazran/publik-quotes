@@ -1,23 +1,10 @@
-let handler = async (m, { conn,text }) => {
-
+let handler = async (m, { conn,text, subject }) => {
 conn.query({
 	json:["action", "invite", `${text.replace('https://chat.whatsapp.com/','')}`]
 })
-m.reply( `Berhasil Gabung`)
+m.reply( `Berhasil Gabung ke grup`)
 }
-handler.help = [''].map(v => v + ' <>')
-handler.tags = ['']
 handler.command = /^join$/i
-handler.owner = false
-handler.mods = false
-
-
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-handler.exp = 0
-
 module.exports = handler
 
 

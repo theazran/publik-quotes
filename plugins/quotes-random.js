@@ -122,7 +122,6 @@ module.exports = handler
 function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
-
 // https://jalantikus.com/tips/kata-kata-bucin/
 global.bucin = [
   "Aku memilih untuk sendiri, bukan karena menunggu yang sempurna, tetapi butuh yang tak pernah menyerah.",

@@ -12,7 +12,7 @@ let handler = async function (m, { args, usedPrefix }) {
   let sn = user.ig
   args[0] = sn
   user.registered = false
-  m.reply(`✅ Unreg berhasil!\n\nUntuk daftar kembali silahkan ketik\n#daftar Nama Lengkap#username_ig#lk/pr`)
+  m.reply(`✅ Unreg berhasil!\n\nUntuk daftar kembali silahkan ketik\n#daftar Nama#username_ig#lk/pr`)
 }
 handler.help = ['', 'ister'].map(v => 'unreg' + v + ' <SN|SERIAL NUMBER>')
 handler.tags = ['exp']
