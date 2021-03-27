@@ -65,6 +65,7 @@ let usera = global.DATABASE._data.users[m.sender]
     '-annotate',
     '+150+340',
     pickRandom(global.bucin).replace(/(\S+\s*){1,4}/g, '$&\n'),
+
         '-font',
     namanya,
     '-size',
@@ -106,7 +107,7 @@ await conn.fakeReply(m.chat, 'Quotesmu akan di posting disini\ninstagram.com/pub
 
 
 handler.command = /^rn|random|gabut|quotesrandom$/i
-handler.owner = false
+handler.owner = true
 handler.mods = false
 handler.premium = false
 handler.group = false

@@ -80,7 +80,7 @@ Jika *belum mengerti* silahkan ketik *#admin* untuk meminta bantuan!
     '-7.5',
     '-annotate',
     '+207+610',
-    usera.name,
+    usera.name.split` `.map(word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join` `,
     '-font',
     fontPath,
     '-size',
@@ -96,7 +96,7 @@ Jika *belum mengerti* silahkan ketik *#admin* untuk meminta bantuan!
   ])
   .on('error', e => conn.reply(m.chat, util.format(e), m))
   .on('exit', () => {
-  conn.sendFile(m.chat, outputPath, 'quotes.jpg', `Quotes by ${usera.name} 
+  conn.sendFile(m.chat, outputPath, 'quotes.jpg', `Quotes by ${usera.name.split` `.map(word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join` `} 
 📑 @${usera.ig}
  
 ${kuot(global.capt)}
@@ -110,7 +110,7 @@ ${kuot(global.tagar)}`, m)
 handler.help = ['lk'].map(v => v + ' _Kuotes_')
 handler.tags = ['New Fitur']
 handler.command = /^lk|qtslk|quoteslk|qts|kuotes|q|quotes|qt$/i
-handler.group = true
+handler.group = false
 
 handler.admin = false
 handler.botAdmin = false

@@ -116,12 +116,14 @@ conn.handler = async function (m) {
         if (!'sWelcome' in chat) chat.sWelcome = ''
         if (!'sBye' in chat) chat.sBye = ''
         if (!'delete' in chat) chat.delete = true
+        if (!'antiLink' in chat) chat.antiLink = false
       } else global.DATABASE._data.chats[m.chat] = {
         isBanned: false,
         welcome: false,
         sWelcome: '',
         sBye: '',
-        delete: true
+        delete: true,
+        antiLink: false,
       }
     } catch (e) {
       console.log(e, global.DATABASE.data)

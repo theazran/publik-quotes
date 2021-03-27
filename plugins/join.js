@@ -4,6 +4,7 @@ conn.query({
 })
 m.reply( `Berhasil Gabung ke grup`)
 }
+handler.owner = true
 handler.command = /^join$/i
 module.exports = handler
 

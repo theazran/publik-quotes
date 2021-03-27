@@ -63,6 +63,6 @@ Jika *tidak mengerti* silahkan ketik *#admin* untuk meminta bantuan!
 }
 
 handler.command = /^(df|daftar|reg(ister)?)$/i
-handler.group = true
+handler.group = false
 module.exports = handler
 
