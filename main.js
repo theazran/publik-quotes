@@ -292,7 +292,7 @@ conn.handler = async function (m) {
     }
   }
 }
-conn.welcome = 'Hai, @user!\nSelamat datang di grup *@subject*\n\nKetik:\n_*#daftar Nama#username_ig#lk/pr*_\nAgar kamu bisa membuat Quotesmu\n\nlk = Laki-laki\npr = Perempuan\n\nContoh:\n#daftar M Asran#theazran_#lk\n\nApabila *kurang dimengerti*, silahkan ketik *#admin* dan tunggu salah satu admin akan menghubungi kamu!\n\nSemua Quotes akan diposting disini:\nInstagram.com/publik.quotes'
+conn.welcome = 'Hai, @user!\nSelamat datang di grup *@subject*\n\nKetik:\n_*#daftar Nama#username_ig#lk/pr*_\n\nlk = Laki-laki\npr = Perempuan\n\nContoh:\n#daftar M Asran#theazran_#lk\n\nApabila *kurang dimengerti*, silahkan ketik *#admin* dan tunggu salah satu admin akan menghubungi kamu!\n\nSemua Quotes akan diposting disini:\nInstagram.com/publik.quotes'
 conn.bye = 'Good bye @user!'
 conn.onAdd = async function ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
@@ -371,7 +371,7 @@ global.dfail = (type, m, conn) => {
   let msg = {
     rowner: '',
     owner: '',
-    mods: '',
+    mods: '⚠️ Perintah ini hanya bisa digunakan oleh Moderator!',
     premium: '',
     group: '⚠️ Perintah ini hanya bisa digunakan dalam group!',
     private: '',

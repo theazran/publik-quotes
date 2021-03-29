@@ -1,4 +1,5 @@
 let handler = async (m, { conn,text, subject }) => {
+	if (!text) throw 'Linknya mana?'
 conn.query({
 	json:["action", "invite", `${text.replace('https://chat.whatsapp.com/','')}`]
 })

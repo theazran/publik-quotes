@@ -8,7 +8,7 @@ let handler = async (m, { conn, args, type }) => {
 }
 handler.help = [''].map(v => v + ' <>')
 handler.tags = ['']
-handler.command = /^ubahnama$/i
+handler.command = /^(ubahnama)$/i
 handler.owner = true
 handler.mods = false
 handler.premium = true

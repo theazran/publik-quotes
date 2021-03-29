@@ -3,7 +3,7 @@ let handler = async (m, { conn }) => {
 }
 handler.help = [''].map(v => v + ' <>')
 handler.tags = ['']
-handler.customPrefix = /^(assalamualaikum)$/i
+handler.customPrefix = /^assalamualaikum$/i
 handler.command = /(?:)/i
 handler.mods = false
 handler.register = true

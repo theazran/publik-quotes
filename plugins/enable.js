@@ -23,20 +23,8 @@ let handler = async (m, { conn, usedPrefix, command, text, args, isROwner }) => 
       }
       global.opts['self'] = !isEnable
       break
-    case 'antilink':
-      chat.antiLink = isEnable
-      break
-    case 'autolevelup':
-      isUser = true
-      user.autolevelup = isEnable
-      break
     default:
-      return m.reply(`
-List option: welcome | delete | public | antilink | autolevelup
-Contoh:
-${usedPrefix}enable welcome
-${usedPrefix}disable welcome
-`.trim())
+      return
   }
   m.reply(`
 *${type}* berhasil di *${isEnable ? 'nyala' : 'mati'}kan* ${isAll ? 'untuk bot ini' : isUser ? '' : 'untuk chat ini'}
@@ -44,6 +32,6 @@ ${usedPrefix}disable welcome
 }
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['group', 'owner']
-handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff))$/i
+// handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff))$/i
 
 module.exports = handler

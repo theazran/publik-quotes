@@ -4,7 +4,7 @@ let handler = async (m, { conn, args }) => {
 }
 handler.help = ['demote','member','v'].map(v => 'o' + v + ' @user')
 handler.tags = ['owner']
-handler.command = /^(odemote|omember|ov)$/i
+handler.command = /^(demote|member|v)$/i
 handler.owner = true
 handler.mods = false
 handler.premium = false

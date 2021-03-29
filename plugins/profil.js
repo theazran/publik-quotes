@@ -29,6 +29,6 @@ Jika *belum mengerti* silahkan ketik *#admin* untuk meminta bantuan!
 `
   }
 
-handler.command = /^me|profile$/i
+handler.command = /^(me|profile)$/i
 handler.group = true
 module.exports = handler
